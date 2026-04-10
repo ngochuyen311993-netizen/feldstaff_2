@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phần Mềm Quản Lý Chấm Công & Tính Lương</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">⏳</div>
+                <h2>PayMaster</h2>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-tab="employees">
+                    <span class="icon">👥</span> Nhân Viên
+                </button>
+                <button class="nav-btn" data-tab="attendance">
+                    <span class="icon">📅</span> Chấm Công
+                </button>
+                <button class="nav-btn" data-tab="payroll">
+                    <span class="icon">💰</span> Bảng Lương
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <p>Phiên bản 1.0</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Employees Tab -->
+            <section id="employees-tab" class="tab-content active">
+                <header class="tab-header">
+                    <div>
+                        <h1>Quản lý Nhân sự</h1>
+                        <p class="subtitle">Danh sách và thông tin cán bộ nhân viên</p>
+                    </div>
+                    <button class="btn btn-primary" id="btn-add-employee">+ Thêm Nhân Viên</button>
+                </header>
+                <div class="card">
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã NV</th>
+                                    <th>Họ Tên</th>
+                                    <th>Phòng Ban</th>
+                                    <th>Chức Vụ</th>
+                                    <th>Lương / Ngày (VNĐ)</th>
+                                    <th>Hành Động</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employee-list-body">
+                                <!-- Dữ liệu Load bằng JS -->
+                            </tbody>
+                        </table>
+                        <div id="empty-employee-state" class="empty-state hidden">
+                            <div class="empty-icon">📭</div>
+                            <h3>Chưa có nhân viên nào</h3>
+                            <p>Hãy bấm nút "Thêm Nhân Viên" để bắt đầu thiết lập.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Attendance Tab -->
+            <section id="attendance-tab" class="tab-content">
+                <header class="tab-header">
+                    <div>
+                        <h1>Chấm Công</h1>
+                        <p class="subtitle">Điểm danh và ghi nhận trạng thái làm việc hàng ngày</p>
+                    </div>
+                    <div class="controls">
+                        <input type="date" id="attendance-date" class="input-field" title="Chọn ngày chấm công" />
+                    </div>
+                </header>
+                <div class="card">
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã NV</th>
+                                    <th>Họ Tên</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Ghi Chú</th>
+                                    <th>Lưu</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendance-list-body">
+                                <!-- Dữ liệu Load bằng JS -->
+                            </tbody>
+                        </table>
+                        <div id="empty-attendance-state" class="empty-state hidden">
+                            <div class="empty-icon">👥</div>
+                            <h3>Không có dữ liệu</h3>
+                            <p>Vui lòng thêm nhân viên trước khi chấm công.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payroll Tab -->
+            <section id="payroll-tab" class="tab-content">
+                <header class="tab-header">
+                    <div>
+                        <h1>Bảng Lương Tháng</h1>
+                        <p class="subtitle">Tổng hợp ngày công và thu nhập</p>
+                    </div>
+                    <div class="controls">
+                        <input type="month" id="payroll-month" class="input-field" title="Chọn tháng tính lương" />
+                        <button class="btn btn-secondary" id="btn-export">Xuất Báo Cáo</button>
+                    </div>
+                </header>
+                <div class="card">
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã NV</th>
+                                    <th>Họ Tên</th>
+                                    <th>LCB/Ngày</th>
+                                    <th>Số Ngày Làm</th>
+                                    <th>Tổng Lương (VNĐ)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="payroll-list-body">
+                                <!-- Load bằng JS -->
+                            </tbody>
+                        </table>
+                        <div id="empty-payroll-state" class="empty-state hidden">
+                            <div class="empty-icon">📊</div>
+                            <h3>Chưa có dữ liệu</h3>
+                            <p>Chấm công đầy đủ để hệ thống tự động tính lương.</p>
+                        </div>
+                    </div>
+                    <div class="payroll-summary">
+                        <div class="summary-card">
+                            <h4>Tổng Quỹ Lương</h4>
+                            <h2 id="total-payroll-amount">0 đ</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal Thêm/Sửa NV -->
+    <div id="employee-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Thêm Nhân Viên Mới</h2>
+                <button class="close-btn" id="btn-close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="employee-form">
+                    <input type="hidden" id="emp-id">
+                    <div class="form-group">
+                        <label for="emp-code">Mã Nhân Viên *</label>
+                        <input type="text" id="emp-code" class="input-field" required placeholder="VD: NV001">
+                    </div>
+                    <div class="form-group">
+                        <label for="emp-name">Họ và Tên *</label>
+                        <input type="text" id="emp-name" class="input-field" required placeholder="Nhập họ tên...">
+                    </div>
+                    <div class="form-group">
+                        <label for="emp-dept">Phòng Ban</label>
+                        <input type="text" id="emp-dept" class="input-field" placeholder="Kỹ thuật, Nhân sự...">
+                    </div>
+                    <div class="form-group">
+                        <label for="emp-role">Chức Vụ</label>
+                        <input type="text" id="emp-role" class="input-field" placeholder="Nhân viên, Trưởng phòng...">
+                    </div>
+                    <div class="form-group">
+                        <label for="emp-salary">Lương cơ bản / ngày (VNĐ) *</label>
+                        <input type="number" id="emp-salary" class="input-field" required min="0" placeholder="VD: 500000">
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" id="btn-cancel">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Lưu Lại</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Danh sách Công việc (Tasks)
+
+- `[ ]` **Khởi tạo Dự án**: Cài đặt React, Vite và thiết lập cấu trúc thư mục.
+- `[ ]` **Xây dựng Hệ thống Thiết kế (Design System)**: Tạo các file CSS cốt lõi, biến màu sắc, typography và bố cục chính.
+- `[ ]` **Quản lý Nhân sự**: 
+  - `[ ]` Giao diện danh sách nhân viên.
+  - `[ ]` Chức năng Thêm/Sửa/Xóa.
+  - `[ ]` Tích hợp lưu trữ LocalStorage.
+- `[ ]` **Chấm công**:
+  - `[ ]` Giao diện chọn ngày và xem trạng thái.
+  - `[ ]` Xử lý logic đánh dấu điểm danh (Có mặt, Vắng, v.v.).
+- `[ ]` **Tính Lương**:
+  - `[ ]` Giao diện tổng kết ngày công cuối tháng.
+  - `[ ]` Áp dụng công thức tính toán lương.
+- `[ ]` **Hoàn thiện**: Thêm hiệu ứng (animations) và kiểm tra hoạt động dự án.
